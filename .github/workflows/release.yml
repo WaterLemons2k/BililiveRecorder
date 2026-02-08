@@ -57,12 +57,12 @@ jobs:
       - name: Build WPF
         run: msbuild /nologo /v:m /p:Configuration="${{ matrix.build_configuration }}" BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WPF-${{ matrix.build_configuration }}
           path: BililiveRecorder.WPF/bin/${{ matrix.build_configuration }}
       - name: Upload Packed Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WPF-NupkgReleases
           path: BililiveRecorder.WPF/bin/NupkgReleases
@@ -107,7 +107,7 @@ jobs:
         run: dotnet publish -c ${{ matrix.build_configuration }} -r ${{ matrix.rid }} BililiveRecorder.Cli
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: CLI-${{ matrix.rid }}-${{ matrix.build_configuration }}
           path: BililiveRecorder.Cli/publish/${{ matrix.rid }}/Release
