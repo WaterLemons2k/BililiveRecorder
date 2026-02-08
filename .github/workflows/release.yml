@@ -19,12 +19,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
 
       - name: Make sure webui can be built
         if: "${{ matrix.os == 'windows-latest' }}"
@@ -46,7 +46,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
@@ -57,12 +57,12 @@ jobs:
       - name: Build WPF
         run: msbuild /nologo /v:m /p:Configuration="${{ matrix.build_configuration }}" BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WPF-${{ matrix.build_configuration }}
           path: BililiveRecorder.WPF/bin/${{ matrix.build_configuration }}
       - name: Upload Packed Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WPF-NupkgReleases
           path: BililiveRecorder.WPF/bin/NupkgReleases
@@ -89,12 +89,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
 
       - name: Build WebUI
         run: ./webui/build.sh
@@ -107,7 +107,7 @@ jobs:
         run: dotnet publish -c ${{ matrix.build_configuration }} -r ${{ matrix.rid }} BililiveRecorder.Cli
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: CLI-${{ matrix.rid }}-${{ matrix.build_configuration }}
           path: BililiveRecorder.Cli/publish/${{ matrix.rid }}/Release
@@ -135,7 +135,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
