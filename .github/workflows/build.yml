@@ -160,7 +160,7 @@ jobs:
       - name: Build WebUI
         run: ./webui/build.sh
       - name: Build CLI
-        run: dotnet publish -c Release -r linux-musl-x64 -o ./BililiveRecorder.Cli/bin/docker_out BililiveRecorder.Cli --self-contained -p:PublishSingleFile=true -p:DebugSymbols=false
+        run: dotnet publish -c Release -r linux-musl-x64 -o ./BililiveRecorder.Cli/bin/docker_out BililiveRecorder.Cli --self-contained -p:PublishSingleFile=true -p:DebugSymbols=false -p:DebugType=None
       - name: Build CLI - Artifacts
         uses: actions/upload-artifact@v4
         with:

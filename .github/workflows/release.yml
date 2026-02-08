@@ -171,7 +171,7 @@ jobs:
       - name: Build WebUI
         run: ./webui/build.sh
       - name: Build CLI
-        run: dotnet publish -c Release -r linux-musl-x64 -o ./BililiveRecorder.Cli/bin/docker_out BililiveRecorder.Cli --self-contained -p:PublishSingleFile=true
+        run: dotnet publish -c Release -r linux-musl-x64 -o ./BililiveRecorder.Cli/bin/docker_out BililiveRecorder.Cli --self-contained -p:PublishSingleFile=true -p:DebugSymbols=false -p:DebugType=None
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
