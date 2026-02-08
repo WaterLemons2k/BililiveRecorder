@@ -98,14 +98,14 @@ jobs:
         run: dotnet publish -c Debug BililiveRecorder.Cli
       - name: Build CLI - Release
         if: ${{ matrix.rid == 'any' }}
-        run: dotnet publish -c Release BililiveRecorder.Cli --self-contained -p:PublishSingleFile=true
+        run: dotnet publish -c Release BililiveRecorder.Cli
 
       - name: Build CLI - Debug
         if: ${{ matrix.rid != 'any' }}
         run: dotnet publish -c Debug -r ${{ matrix.rid }} BililiveRecorder.Cli
       - name: Build CLI - Release
         if: ${{ matrix.rid != 'any' }}
-        run: dotnet publish -c Release -r ${{ matrix.rid }} BililiveRecorder.Cli
+        run: dotnet publish -c Release -r ${{ matrix.rid }} BililiveRecorder.Cli  --self-contained -p:PublishSingleFile=true
 
       - name: Upload Artifacts - Debug
         uses: actions/upload-artifact@v4
