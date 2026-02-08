@@ -94,6 +94,7 @@ namespace BililiveRecorder.Web.Api
         /// <param name="objectId"></param>
         /// <returns></returns>
         [HttpDelete("{objectId:guid}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(RestApiError), StatusCodes.Status404NotFound)]
         public ActionResult<RoomDto> DeleteRoom(Guid objectId)
