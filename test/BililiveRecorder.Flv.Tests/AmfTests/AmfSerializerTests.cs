@@ -8,7 +8,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.AmfTests
 {
-    [UsesVerify]
     [ExpectationPath("Amf")]
     public class AmfSerializerTests
     {

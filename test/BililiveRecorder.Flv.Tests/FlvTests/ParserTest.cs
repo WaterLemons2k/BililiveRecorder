@@ -9,7 +9,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.FlvTests
 {
-    [UsesVerify]
     [ExpectationPath("FlvParser")]
     public class ParserTest
     {

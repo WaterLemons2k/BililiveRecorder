@@ -16,7 +16,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.RuleTests
 {
-    [UsesVerify]
     [ExpectationPath("Bad")]
     public class IntegratedBadTests : IntegratedTestBase
     {
