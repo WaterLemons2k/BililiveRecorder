@@ -8,6 +8,7 @@ using BililiveRecorder.Web.Models;
 using BililiveRecorder.Web.Models.Rest;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BililiveRecorder.Web.Api
 {
@@ -72,6 +73,7 @@ namespace BililiveRecorder.Web.Api
         /// <param name="roomId"></param>
         /// <returns></returns>
         [HttpDelete("{roomId:int}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(RestApiError), StatusCodes.Status404NotFound)]
         public ActionResult<RoomDto> DeleteRoom(int roomId)
@@ -92,6 +94,7 @@ namespace BililiveRecorder.Web.Api
         /// <param name="objectId"></param>
         /// <returns></returns>
         [HttpDelete("{objectId:guid}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(RestApiError), StatusCodes.Status404NotFound)]
         public ActionResult<RoomDto> DeleteRoom(Guid objectId)

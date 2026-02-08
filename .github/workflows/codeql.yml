@@ -3,11 +3,6 @@ name: "CodeQL"
 on:
   push:
     branches: [ 'dev' ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ 'dev' ]
-  schedule:
-    - cron: '58 7 * * 6'
 
 jobs:
   analyze:
@@ -25,15 +20,15 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
         submodules: false # skip fetching webui, they are analyzed separately
 
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v5
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v4
       with:
         languages: ${{ matrix.language }}
         queries: +security-extended
@@ -43,6 +38,6 @@ jobs:
       run: dotnet build BililiveRecorder.Cli/BililiveRecorder.Cli.csproj
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v4
       with:
         category: "/language:${{matrix.language}}"
