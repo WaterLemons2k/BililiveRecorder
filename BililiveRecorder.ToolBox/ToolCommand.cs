@@ -21,33 +21,72 @@ namespace BililiveRecorder.ToolBox
         {
             this.RegisterCommand<AnalyzeHandler, AnalyzeRequest, AnalyzeResponse>("analyze", null, c =>
             {
-                c.Add(new Argument<string>("input", "example: input.flv"));
-                c.Add(new Option<ProcessingPipelineSettings?>(name: "--pipeline-settings", parseArgument: this.ParseProcessingPipelineSettings));
+                c.Add(new Argument<string>("input")
+                {
+                    Description = "example: input.flv"
+                });
+
+                c.Add(new Option<ProcessingPipelineSettings?>(
+                    name: "--pipeline-settings",
+                    parseArgument: this.ParseProcessingPipelineSettings
+                ));
             });
 
             this.RegisterCommand<FixHandler, FixRequest, FixResponse>("fix", null, c =>
             {
-                c.Add(new Argument<string>("input", "example: input.flv"));
-                c.Add(new Argument<string>("output-base", "example: output.flv"));
-                c.Add(new Option<ProcessingPipelineSettings?>(name: "--pipeline-settings", parseArgument: this.ParseProcessingPipelineSettings));
+                c.Add(new Argument<string>("input")
+                {
+                    Description = "example: input.flv"
+                });
+
+                c.Add(new Argument<string>("output-base")
+                {
+                    Description = "example: output.flv"
+                });
+
+                c.Add(new Option<ProcessingPipelineSettings?>(
+                    name: "--pipeline-settings",
+                    parseArgument: this.ParseProcessingPipelineSettings
+                ));
             });
 
             this.RegisterCommand<ExportHandler, ExportRequest, ExportResponse>("export", null, c =>
             {
-                c.Add(new Argument<string>("input", "example: input.flv"));
-                c.Add(new Argument<string>("output", "example: output.xml or output.zip"));
+                c.Add(new Argument<string>("input")
+                {
+                    Description = "example: input.flv"
+                });
+
+                c.Add(new Argument<string>("output")
+                {
+                    Description = "example: output.xml or output.zip"
+                });
             });
 
             this.RegisterCommand<DanmakuStartTimeHandler, DanmakuStartTimeRequest, DanmakuStartTimeResponse>("danmaku-start-time", null, c =>
             {
-                c.Add(new Argument<string[]>("inputs", "example: 1.xml 2.xml ..."));
+                c.Add(new Argument<string[]>("inputs")
+                {
+                    Description = "example: 1.xml 2.xml ..."
+                });
             });
 
             this.RegisterCommand<DanmakuMergerHandler, DanmakuMergerRequest, DanmakuMergerResponse>("danmaku-merge", null, c =>
             {
-                c.Add(new Argument<string>("output", "example: output.xml"));
-                c.Add(new Argument<string[]>("inputs", "example: 1.xml 2.xml ..."));
-                c.Add(new Option<int[]?>("--offsets", "Use offsets provided instead of calculating from starttime attribute."));
+                c.Add(new Argument<string>("output")
+                {
+                    Description = "example: output.xml"
+                });
+
+                c.Add(new Argument<string[]>("inputs")
+                {
+                    Description = "example: 1.xml 2.xml ..."
+                });
+
+                c.Add(new Option<int[]?>(
+                    name: "--offsets",
+                    description: "Use offsets provided instead of calculating from starttime attribute."
+                ));
             });
         }
 
