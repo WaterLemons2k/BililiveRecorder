@@ -10,7 +10,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.RuleTests
 {
-    [UsesVerify]
     [ExpectationPath("Good")]
     public class IntegratedGoodTests : IntegratedTestBase
     {

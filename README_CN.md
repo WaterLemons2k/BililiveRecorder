@@ -45,14 +45,6 @@
 
 注意：需要有完整的 git 历史才能生成版本号。
 
-WPF 版：
-
-```powershell
-cd BililiveRecorder.WPF
-msbuild -t:restore
-msbuild
-```
-
 命令行版：
 
 ```sh

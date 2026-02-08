@@ -22,6 +22,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.OpenApi.Models;
 
 namespace BililiveRecorder.Web
@@ -56,7 +57,7 @@ namespace BililiveRecorder.Web
 
 #if DEBUG
             // TODO 移动到一个单独的测试项目里
-            var configuration = new MapperConfiguration(cfg => cfg.AddProfile<DataMappingProfile>());
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile<DataMappingProfile>(), NullLoggerFactory.Instance);
             configuration.AssertConfigurationIsValid();
 #endif
 

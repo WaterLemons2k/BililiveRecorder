@@ -57,14 +57,6 @@ Please note this does not include the public .NET API of `BililiveRecorder.Flv`,
 
 Note: full git history is required for version generation to work.
 
-WPF version:
-
-```powershell
-cd BililiveRecorder.WPF
-msbuild -t:restore
-msbuild
-```
-
 Command line version:
 
 ```sh
@@ -84,7 +76,6 @@ Project | Target |
 BililiveRecorder.Flv | .NET Standard 2.0 |
 BililiveRecorder.Core | .NET 6<br>.NET Framework 4.7.2 |
 BililiveRecorder.Toolbox | .NET Standard 2.0 |
-BililiveRecorder.WPF | .NET Framework 4.7.2 |
 BililiveRecorder.Web | .NET 6 |
 BililiveRecorder.Cli | .NET 6 |
 
@@ -92,8 +83,6 @@ BililiveRecorder.Cli | .NET 6 |
 graph BT
     toolbox(BililiveRecorder.Toolbox) --> flv(BililiveRecorder.Flv)
     core(BililiveRecorder.Core) --> flv
-    wpf(BililiveRecorder.WPF) --> core
-    wpf --> toolbox
     cli(BililiveRecorder.Cli) --> toolbox
     cli ---> core
     web(BililiveRecorder.Web) --> core

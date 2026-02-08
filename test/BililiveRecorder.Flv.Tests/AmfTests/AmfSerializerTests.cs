@@ -8,7 +8,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.AmfTests
 {
-    [UsesVerify]
     [ExpectationPath("Amf")]
     public class AmfSerializerTests
     {
@@ -19,7 +18,7 @@ namespace BililiveRecorder.Flv.Tests.AmfTests
             var body2 = ScriptTagBody.Parse(json);
             var json2 = body2.ToJson();
 
-            body2.Should().BeEquivalentTo(input, options => options.RespectingRuntimeTypes());
+            body2.Should().BeEquivalentTo(input, options => options.PreferringRuntimeMemberTypes());
             json2.Should().Be(json);
 
             Assert.Equal(index, index); // Suppress warnings
@@ -32,8 +31,8 @@ namespace BililiveRecorder.Flv.Tests.AmfTests
             var body2 = ScriptTagBody.Parse(bytes);
             var bytes2 = body2.ToBytes();
 
-            body2.Should().BeEquivalentTo(input, options => options.RespectingRuntimeTypes());
-            bytes2.Should().BeEquivalentTo(bytes2, options => options.RespectingRuntimeTypes());
+            body2.Should().BeEquivalentTo(input, options => options.PreferringRuntimeMemberTypes());
+            bytes2.Should().BeEquivalentTo(bytes2, options => options.PreferringRuntimeMemberTypes());
 
             Assert.Equal(index, index); // Suppress warnings
         }
@@ -52,9 +51,9 @@ namespace BililiveRecorder.Flv.Tests.AmfTests
             b_json.Should().Be(a_json);
             a_byte.Should().BeEquivalentTo(b_byte);
 
-            a_body.Should().BeEquivalentTo(input, options => options.RespectingRuntimeTypes());
-            b_body.Should().BeEquivalentTo(input, options => options.RespectingRuntimeTypes());
-            a_body.Should().BeEquivalentTo(b_body, options => options.RespectingRuntimeTypes());
+            a_body.Should().BeEquivalentTo(input, options => options.PreferringRuntimeMemberTypes());
+            b_body.Should().BeEquivalentTo(input, options => options.PreferringRuntimeMemberTypes());
+            a_body.Should().BeEquivalentTo(b_body, options => options.PreferringRuntimeMemberTypes());
 
             Assert.Equal(index, index); // Suppress warnings
         }

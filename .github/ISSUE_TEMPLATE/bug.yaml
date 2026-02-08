@@ -8,7 +8,6 @@ body:
       description: 你使用的是哪个平台的录播姬？
       multiple: true
       options:
-        - WPF (桌面版)
         - Docker
         - CLI - Windows
         - CLI - Linux
