@@ -38,48 +38,6 @@ jobs:
       - name: Run Tests - Release
         run: dotnet test -v m -c Release
 
-  release_wpf:
-    needs: test # Tests must be passed before releasing
-    strategy:
-      matrix:
-        build_configuration: [Release]
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-          submodules: recursive
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
-      - name: Restore Packages
-        run: msbuild -t:restore /v:m BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
-      - name: Build WPF
-        run: msbuild /nologo /v:m /p:Configuration="${{ matrix.build_configuration }}" BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v6
-        with:
-          name: WPF-${{ matrix.build_configuration }}
-          path: BililiveRecorder.WPF/bin/${{ matrix.build_configuration }}
-      - name: Upload Packed Artifacts
-        uses: actions/upload-artifact@v6
-        with:
-          name: WPF-NupkgReleases
-          path: BililiveRecorder.WPF/bin/NupkgReleases
-      - name: Pack Portable Zip File
-        run: |
-          cd BililiveRecorder.WPF/bin/${{ matrix.build_configuration }}
-          7z a BililiveRecorder-WPF-Portable.zip .
-      - name: Upload Portable Zip File
-        uses: shogo82148/actions-upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: BililiveRecorder.WPF/bin/${{ matrix.build_configuration }}/BililiveRecorder-WPF-Portable.zip
-          asset_name: BililiveRecorder-WPF-Portable.zip
-          asset_content_type: application/zip
-
   release_cli:
     needs: test # Tests must be passed before releasing
     strategy:

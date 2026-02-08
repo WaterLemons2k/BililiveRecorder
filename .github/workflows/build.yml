@@ -41,39 +41,6 @@ jobs:
       - name: Run Tests - Release
         run: dotnet test -v m -c Release
 
-  build_wpf:
-    # Tests can be run parallelly for debug builds to save time
-    # needs: test
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-          submodules: recursive
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
-      - name: Restore Packages
-        run: msbuild -t:restore /v:m BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
-
-      - name: Build WPF - Debug
-        run: msbuild /nologo /v:m /p:Configuration="Debug" BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
-      - name: Build WPF - Release
-        run: msbuild /nologo /v:m /p:Configuration="Release" BililiveRecorder.WPF/BililiveRecorder.WPF.csproj
-
-      - name: Upload Artifacts - Debug
-        uses: actions/upload-artifact@v6
-        with:
-          name: WPF-Debug
-          path: BililiveRecorder.WPF/bin/Debug
-
-      - name: Upload Artifacts - Release
-        uses: actions/upload-artifact@v6
-        with:
-          name: WPF-Release
-          path: BililiveRecorder.WPF/bin/Release
-
   build_cli:
     # Tests can be run parallelly for debug builds to save time
     # needs: test

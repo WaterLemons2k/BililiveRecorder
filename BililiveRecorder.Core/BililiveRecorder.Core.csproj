@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   
   <PropertyGroup>
-    <TargetFrameworks>net472;net10.0</TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
@@ -25,16 +25,10 @@
     </PackageReference>
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="StructLinq" Version="0.28.1" />
-    <PackageReference Include="System.IO.Pipelines" Version="7.0.0" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\BililiveRecorder.Flv\BililiveRecorder.Flv.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-    <Reference Include="System.Web" />
-    <PackageReference Include="BrotliSharpLib" Version="0.3.3" />
   </ItemGroup>
   
 </Project>
