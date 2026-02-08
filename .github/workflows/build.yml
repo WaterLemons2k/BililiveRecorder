@@ -3,7 +3,7 @@ name: Build and Test
 on:
   push:
     branches:
-      - "**"
+      - "dev"
   pull_request:
 
 env:
@@ -79,7 +79,7 @@ jobs:
     # needs: test
     strategy:
       matrix:
-        rid: [any, linux-musl-x64, linux-x64]
+        rid: [any, linux-musl-x64]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
