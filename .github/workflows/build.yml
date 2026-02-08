@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
 
       - name: Make sure webui can be built
         if: "${{ matrix.os == 'windows-latest' }}"
@@ -88,7 +88,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
 
       - name: Build WebUI
         run: ./webui/build.sh
