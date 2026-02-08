@@ -101,10 +101,10 @@ jobs:
 
       - name: Build CLI
         if: ${{ matrix.rid == 'any' }}
-        run: dotnet publish -c ${{ matrix.build_configuration }} BililiveRecorder.Cli/BililiveRecorder.Cli.csproj
+        run: dotnet publish -c ${{ matrix.build_configuration }} BililiveRecorder.Cli
       - name: Build CLI
         if: ${{ matrix.rid != 'any' }}
-        run: dotnet publish -c ${{ matrix.build_configuration }} -r ${{ matrix.rid }} BililiveRecorder.Cli/BililiveRecorder.Cli.csproj
+        run: dotnet publish -c ${{ matrix.build_configuration }} -r ${{ matrix.rid }} BililiveRecorder.Cli
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -170,8 +170,6 @@ jobs:
 
       - name: Build WebUI
         run: ./webui/build.sh
-      - name: Build CLI
-        run: dotnet build -c Release -o ./BililiveRecorder.Cli/bin/docker_out BililiveRecorder.Cli/BililiveRecorder.Cli.csproj
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
