@@ -3,7 +3,7 @@ ENV TZ=Asia/Shanghai
 VOLUME [ "/rec" ]
 
 WORKDIR /app
-COPY ./BililiveRecorder.Cli/bin/docker_out .
+COPY --exclude=*.xml ./BililiveRecorder.Cli/bin/docker_out .
 ENTRYPOINT [ "/app/BililiveRecorder.Cli" ]
 EXPOSE 2356/tcp
 CMD [ "run", "--bind", "http://*:2356", "/rec" ]
