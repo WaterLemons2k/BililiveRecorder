@@ -25,7 +25,7 @@ namespace BililiveRecorder.Flv.Tests.RuleTests
             var comments = new List<ProcessingComment>();
 
             // Act
-            await RunPipeline(reader, flvTagListWriter, comments).ConfigureAwait(false);
+            await RunPipeline(reader, flvTagListWriter, comments);
 
             // Assert
             comments.RemoveAll(x => !x.ActionRequired);
@@ -42,7 +42,7 @@ namespace BililiveRecorder.Flv.Tests.RuleTests
             AssertTags.ShouldHaveSingleHeaderTagPerType(outputTags);
             AssertTags.ShouldAlmostEqual(originalTags, outputTags);
 
-            await AssertTagsByRerunPipeline(outputTags).ConfigureAwait(false);
+            await AssertTagsByRerunPipeline(outputTags);
 
             var xmlStr = outputTags.SerializeXml();
             await Verifier.Verify(xmlStr, extension: "xml").UseParameters(path);
@@ -70,7 +70,7 @@ namespace BililiveRecorder.Flv.Tests.RuleTests
             var comments = new List<ProcessingComment>();
 
             // Act
-            await RunPipeline(reader, output, comments).ConfigureAwait(false);
+            await RunPipeline(reader, output, comments);
 
             // Assert
             comments.RemoveAll(x => !x.ActionRequired);
@@ -86,7 +86,7 @@ namespace BililiveRecorder.Flv.Tests.RuleTests
             AssertTags.ShouldHaveSingleHeaderTagPerType(outputTags);
             AssertTags.ShouldAlmostEqual(originalTags, outputTags);
 
-            await AssertTagsByRerunPipeline(outputTags).ConfigureAwait(false);
+            await AssertTagsByRerunPipeline(outputTags);
 
             var xmlStr = outputTags.SerializeXml();
             await Verifier.Verify(xmlStr, extension: "xml").UseParameters(path);
