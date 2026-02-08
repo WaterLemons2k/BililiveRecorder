@@ -9,7 +9,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.FlvTests
 {
-    [UsesVerify]
     [ExpectationPath("FlvWriter")]
     public class WriterTests
     {

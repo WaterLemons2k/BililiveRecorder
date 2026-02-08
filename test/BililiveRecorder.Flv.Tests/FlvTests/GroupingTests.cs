@@ -10,7 +10,6 @@ using Xunit;
 
 namespace BililiveRecorder.Flv.Tests.FlvTests
 {
-    [UsesVerify]
     [ExpectationPath("FlvGrouping")]
     public class GroupingTests
     {
