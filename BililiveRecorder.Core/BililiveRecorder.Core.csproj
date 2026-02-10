@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Fluid.Core" Version="2.31.0" />
-    <PackageReference Include="Flurl" Version="3.0.7" />
+    <PackageReference Include="Flurl" Version="4.0.0" />
     <PackageReference Include="Jint" Version="4.4.2" />
     <PackageReference Include="JsonSubTypes" Version="2.0.1" />
     <PackageReference Include="HierarchicalPropertyDefault" Version="0.1.4-beta-g75fdf624b1" />
